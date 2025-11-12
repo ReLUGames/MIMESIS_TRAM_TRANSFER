@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joining MIMESIS Tram...</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; /* Vertically centers the whole block */
+            min-height: 100vh;
+            box-sizing: border-box; 
+            margin: 0;
+            padding: 20px; /* Padding for small screens */
+            background-color: #000000; /* Clean black background */
+            color: #ffffff; 
+            text-align: center;
+        }
+        
+        /* Layout for all content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .top-logo-container {
+            margin-bottom: 20px;
+        }
+        .top-logo-container img {
+            max-width: 150px; 
+            height: auto;
+        }
+        
+        .gif-container {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        /* Text styles */
+        h1 { 
+            color: #7289da; /* Discord Blurple */
+            margin-top: 0; 
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        p { 
+            font-size: 1.1em; 
+            line-height: 1.5;
+            color: #dbdee1; /* Lighter grey text */
+            margin: 0.5em 0;
+        }
+
+        /* --- NEW BUTTON STYLE --- */
+        /* This styles the <a> tag as a button */
+        #fallback-link { 
+            display: inline-block; /* Allows padding and background */
+            background-image: url('button.png');
+            background-size: 100% 100%; /* Stretches image to fit text */
+            background-repeat: no-repeat;
+            
+            /* Adjust padding to match your button.png's style */
+            padding: 12px 28px; 
+            
+            color: #ffffff; /* Make text white */
+            font-size: 1.2em; 
+            font-weight: bold;
+            text-decoration: none;
+            
+            margin-top: 15px; /* Space above the button */
+        }
+        
+        #fallback-link:hover {
+            text-decoration: none; /* No underline on hover */
+            opacity: 0.9; /* Simple hover effect */
+        }
+        
+        .bottom-logo-container {
+            margin-top: 30px;
+            opacity: 0.6;
+        }
+        .bottom-logo-container img {
+            max-height: 120px; 
+            width: auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="main-content">
+        <div class="top-logo-container">
+            <img src="gamelogo.png" alt="MIMESIS Game Logo">
+        </div>
+
+        <div class="gif-container">
+            <img src="pixel_tram.gif" alt="MIMESIS Tram Arriving...">
+        </div>
+
+        <h1 id="title-text">Joining MIMESIS Tram...</h1>
+        <p id="desc-text">Your tram is arriving. If the game doesn't launch automatically, please click the link below to board:</p>
+        
+        <a id="fallback-link" href="#">Board the Tram</a>
+
+        <div class="bottom-logo-container">
+            <img src="companylogo.png" alt="Company Logo">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+        // --- Translation Data (Links updated) ---
+        const translations = {
+            'en': {
+                title: "Joining MIMESIS Tram...",
+                desc: "Your tram is arriving. If the game doesn't launch automatically, please click the link below to board:",
+                link: "Board" // Shorter text for buttons
+            },
+            'fr': {
+                title: "Connexion au Tram MIMESIS...",
+                desc: "Votre tram arrive. Si le jeu ne se lance pas automatiquement, cliquez sur le lien ci-dessous pour monter à bord :",
+                link: "Embarquer"
+            },
+            'it': {
+                title: "Connessione al Tram MIMESIS...",
+                desc: "Il tuo tram è in arrivo. Se il gioco non si avvia automaticamente, fai clic sul link qui sotto per salire a bordo:",
+                link: "Sali a bordo"
+            },
+            'de': {
+                title: "Beitreten zur MIMESIS-Tram...",
+                desc: "Deine Tram kommt an. Wenn das Spiel nicht automatisch startet, klicke bitte auf den folgenden Link, um einzusteigen:",
+                link: "Einsteigen"
+            },
+            'es': {
+                title: "Conectando al Tranvía MIMESIS...",
+                desc: "Tu tranvía está llegando. Si el juego no se inicia automáticamente, haz clic en el siguiente enlace para subir a bordo:",
+                link: "Embarcar"
+            },
+            'ru': {
+                title: "Подключение к трамваю MIMESIS...",
+                desc: "Ваш трамвай прибывает. Если игра не запускается автоматически, нажмите на ссылку ниже, чтобы сесть в вагон:",
+                link: "На посадку"
+            },
+            'pt': { // pt-br
+                title: "Conectando ao Bonde MIMESIS...",
+                desc: "Seu bonde está chegando. Se o jogo não iniciar automaticamente, clique no link abaixo para embarcar:",
+                link: "Embarcar"
+            },
+            'zh': { // zh-cn, zh-tw
+                title: "正在加入 MIMESIS 电车...",
+                desc: "您的电车即将抵达。如果游戏未自动启动，请点击下方链接上车：",
+                link: "登上电车"
+            },
+            'ja': {
+                title: "MIMESISトラムに参加中...",
+                desc: "トラムが到着します。ゲームが自動的に起動しない場合は、以下のリンクをクリックしてご乗車ください：",
+                link: "乗車する"
+            },
+            'ko': {
+                title: "MIMESIS 트램에 탑승 중...",
+                desc: "트램이 도착하고 있습니다. 게임이 자동으로 실행되지 않으면, 아래 링크를 클릭하여 탑승하세요:",
+                link: "탑승하기"
+            }
+        };
+
+        // --- Core Logic (Unchanged) ---
+        try {
+            const userLang = navigator.language || navigator.userLanguage;
+            const baseLang = userLang.split('-')[0];
+            const lang = translations[userLang] ? userLang 
+                       : translations[baseLang] ? baseLang 
+                       : 'en';
+            const t = translations[lang];
+
+            document.getElementById("title-text").innerText = t.title;
+            document.getElementById("desc-text").innerText = t.desc;
+            document.getElementById("fallback-link").innerText = t.link; // This text goes ON the button
+            document.title = t.title;
+
+            const steamAppId = "2827200";
+            const params = new URLSearchParams(window.location.search);
+            const lobbyId = params.get("lobby");
+
+            if (!lobbyId || !/^\d{18}$/.test(lobbyId)) {
+                throw new Error("Invalid or missing lobby ID.");
+            }
+
+            const steamLink = `steam://joinlobby/${steamAppId}/${lobbyId}`;
+            document.getElementById("fallback-link").href = steamLink;
+            window.location.href = steamLink;
+
+        } catch (error) {
+            console.error(error);
+            document.getElementById("title-text").innerText = "Error";
+            document.getElementById("desc-text").innerText = "Could not find a valid lobby ID in the URL.";
+            document.getElementById("fallback-link").style.display = "none";
+        }
+    </script>
+</body>
+</html>
