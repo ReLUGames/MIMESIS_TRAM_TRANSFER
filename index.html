@@ -184,7 +184,8 @@
             const t = translations[lang];
 
             document.getElementById("title-text").innerText = t.title;
-            document.getElementById("desc-text").innerText = t.desc;
+            const formattedDesc = t.desc.replace("{code}", lobbyId);
+            document.getElementById("desc-text").innerHTML = formattedDesc;
             document.getElementById("fallback-link").innerText = t.link; // This text goes ON the button
             document.title = t.title;
 
