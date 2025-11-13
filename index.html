@@ -183,15 +183,15 @@
                        : 'en';
             const t = translations[lang];
 
+            const steamAppId = "2827200";
+            const params = new URLSearchParams(window.location.search);
+            const lobbyId = params.get("lobby");
+
             document.getElementById("title-text").innerText = t.title;
             const formattedDesc = t.desc.replace("{code}", lobbyId);
             document.getElementById("desc-text").innerHTML = formattedDesc;
             document.getElementById("fallback-link").innerText = t.link; // This text goes ON the button
             document.title = t.title;
-
-            const steamAppId = "2827200";
-            const params = new URLSearchParams(window.location.search);
-            const lobbyId = params.get("lobby");
 
             if (!lobbyId || !/^\d{18}$/.test(lobbyId)) {
                 throw new Error("Invalid or missing lobby ID.");
